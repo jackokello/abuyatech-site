@@ -2,31 +2,368 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>AbuyaTech</title>
+    <title>AbuyaTech – Engineering, Cybersecurity, Cloud & AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AbuyaTech is a technology firm providing Engineering, Cybersecurity, Cloud, AI, Project Management, Training, and Careers services for organizations worldwide." />
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        max-width: 900px;
-        margin: 2rem auto;
-        padding: 1rem;
-        background: #f8fafc;
-        color: #111827;
+      :root {
+        --primary: #0f172a;
+        --accent: #2563eb;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text: #111827;
+        --border: #e2e8f0;
       }
-      h1 { color: #0f172a; }
-      .card {
+      * { box-sizing: border-box; }
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+      header {
+        background: var(--primary);
+        color: white;
+        padding: 1.5rem 1rem 2rem;
+        text-align: center;
+      }
+      header img {
+        height: 80px;
+        margin-bottom: 0.5rem;
+      }
+      header h1 {
+        margin: 0.3rem 0 0.5rem;
+        font-size: 1.8rem;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        gap: 0.8rem;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.4rem 1rem;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 6px;
+        transition: background 0.2s;
+        font-size: 0.9rem;
+      }
+      nav a:hover { background: rgba(255,255,255,0.2); }
+      main {
+        max-width: 1100px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      .intro {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .intro p {
+        max-width: 700px;
+        margin: 0.5rem auto;
+        color: #374151;
+      }
+      .services, .team-members {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+      .service-card, .member-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid rgba(15, 23, 42, 0.03);
+      }
+      .service-card:hover, .member-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+      .service-card h3, .member-card h3 {
+        color: var(--accent);
+        margin-top: 0;
+      }
+      .team {
+        margin-top: 4rem;
+        text-align: center;
+      }
+      .team h2 {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+      }
+      .member-card { text-align: left; }
+      .certifications {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-top: 0.5rem;
+        line-height: 1.4;
+      }
+      .email { margin-top: 0.5rem; }
+      .email a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .email a:hover { text-decoration: underline; }
+      .contact {
+        margin-top: 4rem;
+      }
+      .contact-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .contact-header h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+      form {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.03);
+        border: 1px solid rgba(15, 23, 42, 0.02);
+      }
+      form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        color: #1f2937;
+      }
+      form input, form textarea, form select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+      form input:focus, form textarea:focus, form select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(37,99,235,0.18);
+      }
+      form button {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 0.85rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      form button:hover { background: #1d4ed8; }
+      .contact-panel {
         background: white;
         border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 2rem;
+        border: 1px solid rgba(15, 23, 42, 0.02);
+        box-shadow: 0 3px 15px rgba(0,0,0,0.02);
+      }
+      .contact-panel h3 {
+        margin-top: 0;
+        color: var(--primary);
+      }
+      .contact-panel p {
+        margin: 0.3rem 0;
+      }
+      .panel-group {
+        margin-top: 1.5rem;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 1rem;
+      }
+      .panel-group strong {
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+      .badge {
+        display: inline-block;
+        background: rgba(37, 99, 235, 0.1);
+        color: #1d4ed8;
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: #1e293b;
+        color: #cbd5e1;
+        margin-top: 3rem;
+      }
+      footer a { color: #60a5fa; text-decoration: none; }
+      footer a:hover { text-decoration: underline; }
+      @media (max-width: 960px) {
+        .contact-wrapper {
+          grid-template-columns: 1fr;
+        }
+        nav { gap: 0.4rem; }
       }
     </style>
   </head>
   <body>
-    <h1>Welcome to AbuyaTech</h1>
-    <div class="card">
-      <p>Cybersecurity, cloud hardening, and threat detection built for startups and critical infrastructure teams.</p>
-      <p>Email: jack@abuyatech.com</p>
-    </div>
+    <header>
+      <!-- logo must exist in repo root as abuyatech-logo.png -->
+      <img src="abuyatech-logo.png" alt="AbuyaTech Logo" />
+      <h1>AbuyaTech</h1>
+      <nav>
+        <a href="#engineering">Engineering</a>
+        <a href="#cybersecurity">Cybersecurity</a>
+        <a href="#cloud">Cloud</a>
+        <a href="#ai">AI</a>
+        <a href="#project">Project Mgmt</a>
+        <a href="#training">Training</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h2>Secure. Intelligent. Delivered.</h2>
+        <p>AbuyaTech is a cybersecurity-driven technology company providing engineering, cloud, and AI solutions to startups, SMBs, and mission-critical teams.</p>
+      </section>
+
+      <section class="services">
+        <div class="service-card" id="engineering">
+          <h3>1. Engineering</h3>
+          <p>Design and delivery of reliable, scalable, and secure systems for enterprise and infrastructure environments.</p>
+        </div>
+        <div class="service-card" id="cybersecurity">
+          <h3>2. IT / Cybersecurity</h3>
+          <p>Threat detection, vulnerability management (Tenable / Defender / Sentinel), SOC processes, and incident readiness.</p>
+        </div>
+        <div class="service-card" id="cloud">
+          <h3>3. Cloud</h3>
+          <p>Secure AWS / Azure landing zones, hardening, and automation for teams modernizing to the cloud.</p>
+        </div>
+        <div class="service-card" id="ai">
+          <h3>4. Artificial Intelligence (AI)</h3>
+          <p>Explainable AI, LLM-assisted defense, and data-driven insights to power the next wave of cyber resilience.</p>
+        </div>
+        <div class="service-card" id="project">
+          <h3>5. Project Management</h3>
+          <p>PMP, Agile, and Scrum-based delivery to keep security and engineering projects on time and on budget.</p>
+        </div>
+        <div class="service-card" id="training">
+          <h3>6. Training</h3>
+          <p>Role-based training for SOC, cloud, and engineering teams — built from real enterprise deployments.</p>
+        </div>
+        <div class="service-card" id="careers">
+          <h3>7. Careers</h3>
+          <p>We are growing. Send your resume to <a href="mailto:jack.okello@abuyatech.com">jack.okello@abuyatech.com</a>.</p>
+        </div>
+      </section>
+
+      <section class="team" id="team">
+        <h2>Leadership</h2>
+        <div class="team-members">
+          <div class="member-card">
+            <h3>Seifullah Bello</h3>
+            <p><strong>Role:</strong> Senior Project &amp; Engineering Lead</p>
+            <div class="certifications">
+              <strong>Certifications:</strong><br />
+              • Project Management Professional (PMP)<br />
+              • Professional Engineer (PE)<br />
+              • Microsoft Certified: Azure Data Scientist Associate (DP-100)
+            </div>
+          </div>
+          <div class="member-card">
+            <h3>Jack Okello</h3>
+            <p><strong>Role:</strong> Cybersecurity &amp; Cloud Solutions Lead</p>
+            <div class="email">
+              <a href="mailto:jack.okello@abuyatech.com">jack.okello@abuyatech.com</a>
+            </div>
+            <div class="certifications">
+              <strong>Certifications:</strong><br />
+              • Project Management Professional (PMP)<br />
+              • AWS Certified Solutions Architect<br />
+              • CompTIA Security+ ce<br />
+              • Certified ScrumMaster (CSM)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="contact-header">
+          <h2>Contact AbuyaTech</h2>
+          <p>Tell us what you need — cybersecurity hardening, cloud migration, AI pilots, or project delivery.</p>
+        </div>
+        <div class="contact-wrapper">
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <label for="full-name">Full name</label>
+            <input id="full-name" name="name" type="text" placeholder="Your name" required />
+
+            <label for="email">Work email</label>
+            <input id="email" name="_replyto" type="email" placeholder="you@company.com" required />
+
+            <label for="service">Interested in</label>
+            <select id="service" name="service">
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Cloud">Cloud</option>
+              <option value="AI">Artificial Intelligence (AI)</option>
+              <option value="Project Management">Project Management</option>
+              <option value="Training">Training</option>
+              <option value="Careers">Careers / Partnership</option>
+            </select>
+
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="5" placeholder="Describe your project, problem, or RFP…" required></textarea>
+
+            <input type="hidden" name="to" value="jack.okello@abuyatech.com" />
+            <button type="submit">Submit request</button>
+          </form>
+
+          <div class="contact-panel">
+            <h3>Business Contacts</h3>
+            <p class="badge">Primary</p>
+            <p><strong>Email:</strong> <a href="mailto:jack.okello@abuyatech.com">jack.okello@abuyatech.com</a></p>
+
+            <div class="panel-group">
+              <strong>Sales &amp; Solutions</strong>
+              <p><a href="mailto:jack.okello@abuyatech.com">jack.okello@abuyatech.com</a></p>
+            </div>
+
+            <div class="panel-group">
+              <strong>Security Contact</strong>
+              <p><a href="mailto:security@abuyatech.com">security@abuyatech.com</a> (use for vuln reports / logs)</p>
+            </div>
+
+            <div class="panel-group">
+              <strong>Location</strong>
+              <p>AbuyaTech LLC<br />Jersey City, NJ, USA</p>
+            </div>
+
+            <div class="panel-group">
+              <strong>Business Hours</strong>
+              <p>Mon – Fri: 9:00 AM – 6:00 PM ET<br />After-hours incident support available.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 AbuyaTech LLC · <a href="mailto:jack.okello@abuyatech.com">jack.okello@abuyatech.com</a> · www.abuyatech.com</p>
+    </footer>
   </body>
 </html>
